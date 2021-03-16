@@ -3,6 +3,7 @@ const cors = require('cors')
 const mongo = require('mongodb')
 const bodyParser = require('body-parser')
 const { json } = require('body-parser')
+const path = require('path')
 
 const app = express()
 const port = "3030"
@@ -18,10 +19,10 @@ app.use(function timelog(req, res, next) {
     next()
 })
 
-/*app.get('/', (req,res) => {
+app.get('/', (req,res) => {
     console.log('Redirecting to client...')
-    res.redirect(`${client}/`)
-})*/
+    res.sendFile(path.join(__dirname,'build','index.html'))
+})
 
 app.post('/add_student', async function (req,res) {
     console.log(req.body)
