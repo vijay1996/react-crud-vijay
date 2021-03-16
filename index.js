@@ -6,7 +6,7 @@ const { json } = require('body-parser')
 const path = require('path')
 
 const app = express()
-const port = "3030"
+const port = process.env.PORT || "3030"
 const client = "http://localhost:3000"
 const dburl = "mongodb://127.0.0.1:27017/"
 
