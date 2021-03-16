@@ -3,11 +3,9 @@ const cors = require('cors')
 const mongo = require('mongodb')
 const bodyParser = require('body-parser')
 const { json } = require('body-parser')
-const path = require('path')
 
 const app = express()
-const port = process.env.PORT || "3030"
-const client = "http://localhost:3000"
+const port = process.env.PORT || 3000
 const dburl = "mongodb+srv://node:KIpF849sPW6iZ5Id@react-crud-vijay.yxjzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 app.use(cors())
@@ -19,10 +17,12 @@ app.use(function timelog(req, res, next) {
     next()
 })
 
-app.get('/', (req,res) => {
+app.use(express.static('./build'))
+
+/*app.get('/', (req,res) => {
     console.log('Redirecting to client...')
-    res.sendFile(path.join(__dirname,'build','index.html'))
-})
+    res.redirect(`${client}/`)
+})*/
 
 app.post('/add_student', async function (req,res) {
     console.log(req.body)
@@ -101,8 +101,6 @@ app.post('/update_student', function (req,res) {
         })
     })
 })
-
-app.use(express.static('./build'))
 
 app.listen(port, () => {
     console.log("Server online @ PORT:3030...")
