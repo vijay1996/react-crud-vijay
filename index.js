@@ -8,7 +8,7 @@ const path = require('path')
 const app = express()
 const port = process.env.PORT || "3030"
 const client = "http://localhost:3000"
-const dburl = "mongodb://127.0.0.1:27017/"
+const dburl = "mongodb+srv://node:KIpF849sPW6iZ5Id@react-crud-vijay.yxjzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}));
